@@ -1,9 +1,21 @@
+from flask import Flask, render_template, request
+
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return render_template('index.html')
+
+@app.route('/greet', methods=['POST'])
+def greet():
+   import random
 import random
 stages = [1,2,3,4,5,6]
 lives = 6
 #word_list = ["aardvark", "baboon", "camel"]
 from word_bank import word_list
 chosen_word = random.choice (word_list)
+word_list = ["class","dog","cat", "mouse", "house", "car", "apple", "banana", "orange", "grape", "watermelon", "pineapple", "strawberry", "blueberry", "kiwi", "mango", "pear", "peach", "plum", "cherry", "lemon", "lime", "grapefruit", "coconut", "papaya", "apricot", "avocado", "blackberry", "cranberry", "fig", "guava", "jackfruit" "lychee", "lychee", "nectarine", "passionfruit", "persimmon" "pomegranate", "raspberry", "starfruit", "tangerine", "watermelon" "cantaloupe", "honeydew"]
 #print (chosen_word)
 
 placeholder = ""
@@ -48,5 +60,7 @@ while not game_over:
   if "_" not in display:
     print(f"***** It was {chosen_word}. You won!******")
     game_over = True
-  
+
+if __name__ == '__main__':
+    app.run(debug=True)
 
